@@ -1,0 +1,140 @@
+D:\python\py-faster-rcnn\lib>SET VS90COMNTOOLS=%VS120COMNTOOLS%
+
+D:\python\py-faster-rcnn\lib>python newsetup.py install
+home = C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0
+
+running install
+running bdist_egg
+running egg_info
+writing fast_rcnn.egg-info\PKG-INFO
+writing top-level names to fast_rcnn.egg-info\top_level.txt
+writing dependency_links to fast_rcnn.egg-info\dependency_links.txt
+reading manifest file 'fast_rcnn.egg-info\SOURCES.txt'
+writing manifest file 'fast_rcnn.egg-info\SOURCES.txt'
+installing library code to build\bdist.win-amd64\egg
+running install_lib
+running build_ext
+skipping 'utils\bbox.c' Cython extension (up-to-date)
+building 'utils.cython_bbox' extension
+creating build\temp.win-amd64-2.7\Release\utils
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\BIN\amd64\cl.exe /c /nologo /Ox /MD /W3 /GS- /DNDEBUG -ID:\Anaconda2\lib\site-packages\numpy\core\include -ID:\Anaconda2\include -ID:\Anaconda2\PC /Tcutils\bbox.c /Fobuild\temp.win-amd64-2.7\Release\utils\bbox.obj
+bbox.c
+d:\anaconda2\lib\site-packages\numpy\core\include\numpy\npy_1_7_deprecated_api.h(12) : Warning Msg: Using deprecated NumPy API, disable it by #defining NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+utils\bbox.c(1718) : warning C4244: “=”: 从“npy_intp”转换到“unsigned int”，可能丢失数据
+utils\bbox.c(1727) : warning C4244: “=”: 从“npy_intp”转换到“unsigned int”，可能丢失数据
+utils\bbox.c(6647) : warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+utils\bbox.c(6653) : warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+creating build\lib.win-amd64-2.7\utils
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\BIN\amd64\link.exe /DLL /nologo /INCREMENTAL:NO /LIBPATH:D:\Anaconda2\libs /LIBPATH:D:\Anaconda2\PCbuild\amd64 /LIBPATH:D:\Anaconda2\PC\VS9.0\amd64 /EXPORT:initcython_bbox build\temp.win-amd64-2.7\Release\utils\bbox.obj /OUT:build\lib.win-amd64-2.7\utils\cython_bbox.pyd /IMPLIB:build\temp.win-amd64-2.7\Release\utils\cython_bbox.lib /MANIFESTFILE:build\temp.win-amd64-2.7\Release\utils\cython_bbox.pyd.manifest
+bbox.obj : warning LNK4197: 多次指定导出“initcython_bbox”；使用第一个规范
+   正在创建库 build\temp.win-amd64-2.7\Release\utils\cython_bbox.lib 和对象 build\temp.win-amd64-2.7\Release\utils\cython_bbox.exp
+cythoning nms\cpu_nms.pyx to nms\cpu_nms.c
+building 'nms.cpu_nms' extension
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\BIN\amd64\cl.exe /c /nologo /Ox /MD /W3 /GS- /DNDEBUG -ID:\Anaconda2\lib\site-packages\numpy\core\include -ID:\Anaconda2\include -ID:\Anaconda2\PC /Tcnms\cpu_nms.c /Fobuild\temp.win-amd64-2.7\Release\nms\cpu_nms.obj
+cpu_nms.c
+d:\anaconda2\lib\site-packages\numpy\core\include\numpy\npy_1_7_deprecated_api.h(12) : Warning Msg: Using deprecated NumPy API, disable it by #defining NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+nms\cpu_nms.c(2118) : warning C4244: “=”: 从“npy_intp”转换到“int”，可能丢失数据
+nms\cpu_nms.c(2207) : warning C4244: “=”: 从“__pyx_t_5numpy_intp_t”转换到“int”，可能丢失数据
+nms\cpu_nms.c(2382) : warning C4244: “=”: 从“__pyx_t_5numpy_intp_t”转换到“int”，可能丢失数据
+nms\cpu_nms.c(2505) : warning C4244: “函数”: 从“double”转换到“__pyx_t_5numpy_float32_t”，可能丢失数据
+nms\cpu_nms.c(2514) : warning C4244: “函数”: 从“double”转换到“__pyx_t_5numpy_float32_t”，可能丢失数据
+nms\cpu_nms.c(7526) : warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+nms\cpu_nms.c(7532) : warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\BIN\amd64\link.exe /DLL /nologo /INCREMENTAL:NO /LIBPATH:D:\Anaconda2\libs /LIBPATH:D:\Anaconda2\PCbuild\amd64 /LIBPATH:D:\Anaconda2\PC\VS9.0\amd64 /EXPORT:initcpu_nms build\temp.win-amd64-2.7\Release\nms\cpu_nms.obj /OUT:build\lib.win-amd64-2.7\nms\cpu_nms.pyd /IMPLIB:build\temp.win-amd64-2.7\Release\nms\cpu_nms.lib /MANIFESTFILE:build\temp.win-amd64-2.7\Release\nms\cpu_nms.pyd.manifest
+cpu_nms.obj : warning LNK4197: 多次指定导出“initcpu_nms”；使用第一个规范
+   正在创建库 build\temp.win-amd64-2.7\Release\nms\cpu_nms.lib 和对象 build\temp.win-amd64-2.7\Release\nms\cpu_nms.exp
+cythoning pycocotools\_mask.pyx to pycocotools\_mask.c
+building 'pycocotools._mask' extension
+creating build\temp.win-amd64-2.7\Release\pycocotools
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\BIN\amd64\cl.exe /c /nologo /Ox /MD /W3 /GS- /DNDEBUG -ID:\Anaconda2\lib\site-packages\numpy\core\include -Ipycocotools -ID:\Anaconda2\include -ID:\Anaconda2\PC /Tcpycocotools\maskApi.c /Fobuild\temp.win-amd64-2.7\Release\pycocotools\maskApi.obj
+maskApi.c
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\BIN\amd64\cl.exe /c /nologo /Ox /MD /W3 /GS- /DNDEBUG -ID:\Anaconda2\lib\site-packages\numpy\core\include -Ipycocotools -ID:\Anaconda2\include -ID:\Anaconda2\PC /Tcpycocotools\_mask.c /Fobuild\temp.win-amd64-2.7\Release\pycocotools\_mask.obj
+_mask.c
+d:\anaconda2\lib\site-packages\numpy\core\include\numpy\npy_1_7_deprecated_api.h(12) : Warning Msg: Using deprecated NumPy API, disable it by #defining NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+pycocotools\_mask.c(2999) : warning C4244: “=”: 从“Py_ssize_t”转换到“siz”，可能丢失数据
+pycocotools\_mask.c(3279) : warning C4244: “函数”: 从“npy_intp”转换到“siz”，可能丢失数据
+pycocotools\_mask.c(6710) : warning C4244: “=”: 从“npy_intp”转换到“siz”，可能丢失数据
+pycocotools\_mask.c(7106) : warning C4244: “函数”: 从“Py_ssize_t”转换到“siz”，可能丢失数据
+pycocotools\_mask.c(7517) : warning C4244: “=”: 从“Py_ssize_t”转换到“siz”，可能丢失数据
+pycocotools\_mask.c(14684) : warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+pycocotools\_mask.c(14690) : warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+creating build\lib.win-amd64-2.7\pycocotools
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\BIN\amd64\link.exe /DLL /nologo /INCREMENTAL:NO /LIBPATH:D:\Anaconda2\libs /LIBPATH:D:\Anaconda2\PCbuild\amd64 /LIBPATH:D:\Anaconda2\PC\VS9.0\amd64 /EXPORT:init_mask build\temp.win-amd64-2.7\Release\pycocotools\maskApi.obj build\temp.win-amd64-2.7\Release\pycocotools\_mask.obj /OUT:build\lib.win-amd64-2.7\pycocotools\_mask.pyd /IMPLIB:build\temp.win-amd64-2.7\Release\pycocotools\_mask.lib /MANIFESTFILE:build\temp.win-amd64-2.7\Release\pycocotools\_mask.pyd.manifest
+_mask.obj : warning LNK4197: 多次指定导出“init_mask”；使用第一个规范
+   正在创建库 build\temp.win-amd64-2.7\Release\pycocotools\_mask.lib 和对象 build\temp.win-amd64-2.7\Release\pycocotools\_mask.exp
+creating build\bdist.win-amd64\egg
+creating build\bdist.win-amd64\egg\nms
+copying build\lib.win-amd64-2.7\nms\cpu_nms.pyd -> build\bdist.win-amd64\egg\nms
+copying build\lib.win-amd64-2.7\nms\gpu_nms.pyd -> build\bdist.win-amd64\egg\nms
+creating build\bdist.win-amd64\egg\pycocotools
+copying build\lib.win-amd64-2.7\pycocotools\_mask.pyd -> build\bdist.win-amd64\egg\pycocotools
+creating build\bdist.win-amd64\egg\utils
+copying build\lib.win-amd64-2.7\utils\cython_bbox.pyd -> build\bdist.win-amd64\egg\utils
+creating stub loader for utils\cython_bbox.pyd
+creating stub loader for nms\cpu_nms.pyd
+creating stub loader for pycocotools\_mask.pyd
+byte-compiling build\bdist.win-amd64\egg\utils\cython_bbox.py to cython_bbox.pyc
+byte-compiling build\bdist.win-amd64\egg\nms\cpu_nms.py to cpu_nms.pyc
+byte-compiling build\bdist.win-amd64\egg\pycocotools\_mask.py to _mask.pyc
+creating build\bdist.win-amd64\egg\EGG-INFO
+copying fast_rcnn.egg-info\PKG-INFO -> build\bdist.win-amd64\egg\EGG-INFO
+copying fast_rcnn.egg-info\SOURCES.txt -> build\bdist.win-amd64\egg\EGG-INFO
+copying fast_rcnn.egg-info\dependency_links.txt -> build\bdist.win-amd64\egg\EGG-INFO
+copying fast_rcnn.egg-info\top_level.txt -> build\bdist.win-amd64\egg\EGG-INFO
+writing build\bdist.win-amd64\egg\EGG-INFO\native_libs.txt
+zip_safe flag not set; analyzing archive contents...
+creating 'dist\fast_rcnn-0.0.0-py2.7-win-amd64.egg' and adding 'build\bdist.win-amd64\egg' to it
+removing 'build\bdist.win-amd64\egg' (and everything under it)
+Processing fast_rcnn-0.0.0-py2.7-win-amd64.egg
+Copying fast_rcnn-0.0.0-py2.7-win-amd64.egg to d:\anaconda2\lib\site-packages
+Adding fast-rcnn 0.0.0 to easy-install.pth file
+
+Installed d:\anaconda2\lib\site-packages\fast_rcnn-0.0.0-py2.7-win-amd64.egg
+Processing dependencies for fast-rcnn==0.0.0
+Finished processing dependencies for fast-rcnn==0.0.0
+
+D:\python\py-faster-rcnn\lib>
+D:\python\py-faster-rcnn\lib>
+D:\python\py-faster-rcnn\lib>
+D:\python\py-faster-rcnn\lib>
+D:\python\py-faster-rcnn\lib>
+
+D:\python\py-faster-rcnn\lib>python setup_cuda.py install
+running install
+running bdist_egg
+running egg_info
+writing py_fast_rcnn_gpu.egg-info\PKG-INFO
+writing top-level names to py_fast_rcnn_gpu.egg-info\top_level.txt
+writing dependency_links to py_fast_rcnn_gpu.egg-info\dependency_links.txt
+reading manifest file 'py_fast_rcnn_gpu.egg-info\SOURCES.txt'
+writing manifest file 'py_fast_rcnn_gpu.egg-info\SOURCES.txt'
+installing library code to build\bdist.win-amd64\egg
+running install_lib
+running build_ext
+creating build\bdist.win-amd64\egg
+creating build\bdist.win-amd64\egg\nms
+copying build\lib.win-amd64-2.7\nms\cpu_nms.pyd -> build\bdist.win-amd64\egg\nms
+copying build\lib.win-amd64-2.7\nms\gpu_nms.pyd -> build\bdist.win-amd64\egg\nms
+creating build\bdist.win-amd64\egg\pycocotools
+copying build\lib.win-amd64-2.7\pycocotools\_mask.pyd -> build\bdist.win-amd64\egg\pycocotools
+creating build\bdist.win-amd64\egg\utils
+copying build\lib.win-amd64-2.7\utils\cython_bbox.pyd -> build\bdist.win-amd64\egg\utils
+creating stub loader for nms\gpu_nms.pyd
+byte-compiling build\bdist.win-amd64\egg\nms\gpu_nms.py to gpu_nms.pyc
+creating build\bdist.win-amd64\egg\EGG-INFO
+copying py_fast_rcnn_gpu.egg-info\PKG-INFO -> build\bdist.win-amd64\egg\EGG-INFO
+copying py_fast_rcnn_gpu.egg-info\SOURCES.txt -> build\bdist.win-amd64\egg\EGG-INFO
+copying py_fast_rcnn_gpu.egg-info\dependency_links.txt -> build\bdist.win-amd64\egg\EGG-INFO
+copying py_fast_rcnn_gpu.egg-info\top_level.txt -> build\bdist.win-amd64\egg\EGG-INFO
+writing build\bdist.win-amd64\egg\EGG-INFO\native_libs.txt
+zip_safe flag not set; analyzing archive contents...
+creating 'dist\py_fast_rcnn_gpu-0.0.0-py2.7-win-amd64.egg' and adding 'build\bdist.win-amd64\egg' to it
+removing 'build\bdist.win-amd64\egg' (and everything under it)
+Processing py_fast_rcnn_gpu-0.0.0-py2.7-win-amd64.egg
+Removing d:\anaconda2\lib\site-packages\py_fast_rcnn_gpu-0.0.0-py2.7-win-amd64.egg
+Copying py_fast_rcnn_gpu-0.0.0-py2.7-win-amd64.egg to d:\anaconda2\lib\site-packages
+py-fast-rcnn-gpu 0.0.0 is already the active version in easy-install.pth
+
+Installed d:\anaconda2\lib\site-packages\py_fast_rcnn_gpu-0.0.0-py2.7-win-amd64.egg
+Processing dependencies for py-fast-rcnn-gpu==0.0.0
+Finished processing dependencies for py-fast-rcnn-gpu==0.0.0

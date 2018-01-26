@@ -84,7 +84,7 @@ class RoIDataLayer(caffe.Layer):
         """Setup the RoIDataLayer."""
 
         # parse the layer parameter string, which must be valid YAML
-        layer_params = yaml.load(self.param_str_)
+        layer_params = yaml.load(self.param_str)
 
         self._num_classes = layer_params['num_classes']
 
@@ -97,6 +97,7 @@ class RoIDataLayer(caffe.Layer):
         self._name_to_top_map['data'] = idx
         idx += 1
 
+        print 'TRAIN.HAS_RPN:', cfg.TRAIN.HAS_RPN
         if cfg.TRAIN.HAS_RPN:
             top[idx].reshape(1, 3)
             self._name_to_top_map['im_info'] = idx
@@ -118,6 +119,9 @@ class RoIDataLayer(caffe.Layer):
             top[idx].reshape(1)
             self._name_to_top_map['labels'] = idx
             idx += 1
+            print 'idx:', idx
+            print 'length of top:', len(top)
+            print top
 
             if cfg.TRAIN.BBOX_REG:
                 # bbox_targets blob: R bounding-box regression targets with 4

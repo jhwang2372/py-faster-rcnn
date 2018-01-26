@@ -1,3 +1,4 @@
+newsetup.py
 setup.py
 fast_rcnn.egg-info/PKG-INFO
 fast_rcnn.egg-info/SOURCES.txt

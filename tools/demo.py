@@ -24,17 +24,12 @@ import scipy.io as sio
 import caffe, os, sys, cv2
 import argparse
 
-CLASSES = ('__background__',
-           'aeroplane', 'bicycle', 'bird', 'boat',
-           'bottle', 'bus', 'car', 'cat', 'chair',
-           'cow', 'diningtable', 'dog', 'horse',
-           'motorbike', 'person', 'pottedplant',
-           'sheep', 'sofa', 'train', 'tvmonitor')
+CLASSES = ('__background__', 'apple', 'person')
 
 NETS = {'vgg16': ('VGG16',
                   'VGG16_faster_rcnn_final.caffemodel'),
         'zf': ('ZF',
-                  'ZF_faster_rcnn_final.caffemodel')}
+                  'zf_faster_rcnn_iter_800.caffemodel')}
 
 
 def vis_detections(im, class_name, dets, thresh=0.5):

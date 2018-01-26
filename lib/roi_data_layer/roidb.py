@@ -49,6 +49,8 @@ def add_bbox_regression_targets(roidb):
     assert 'max_classes' in roidb[0], 'Did you call prepare_roidb first?'
 
     num_images = len(roidb)
+    #print 'number of images:'
+    #print num_images
     # Infer number of classes from the number of columns in gt_overlaps
     num_classes = roidb[0]['gt_overlaps'].shape[1]
     for im_i in xrange(num_images):

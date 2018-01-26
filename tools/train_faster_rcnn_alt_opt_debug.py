@@ -26,36 +26,36 @@ import multiprocessing as mp
 import cPickle
 import shutil
 
-def parse_args():
-    """
-    Parse input arguments
-    """
-    parser = argparse.ArgumentParser(description='Train a Faster R-CNN network')
-    parser.add_argument('--gpu', dest='gpu_id',
-                        help='GPU device id to use [0]',
-                        default=0, type=int)
-    parser.add_argument('--net_name', dest='net_name',
-                        help='network name (e.g., "ZF")',
-                        default=None, type=str)
-    parser.add_argument('--weights', dest='pretrained_model',
-                        help='initialize with pretrained model weights',
-                        default=None, type=str)
-    parser.add_argument('--cfg', dest='cfg_file',
-                        help='optional config file',
-                        default=None, type=str)
-    parser.add_argument('--imdb', dest='imdb_name',
-                        help='dataset to train on',
-                        default='voc_2007_trainval', type=str)
-    parser.add_argument('--set', dest='set_cfgs',
-                        help='set config keys', default=None,
-                        nargs=argparse.REMAINDER)
-
-    if len(sys.argv) == 1:
-        parser.print_help()
-        sys.exit(1)
-
-    args = parser.parse_args()
-    return args
+# def parse_args():
+#     """
+#     Parse input arguments
+#     """
+#     parser = argparse.ArgumentParser(description='Train a Faster R-CNN network')
+#     parser.add_argument('--gpu', dest='gpu_id',
+#                         help='GPU device id to use [0]',
+#                         default=0, type=int)
+#     parser.add_argument('--net_name', dest='net_name',
+#                         help='network name (e.g., "ZF")',
+#                         default='VGG16', type=str)
+#     parser.add_argument('--weights', dest='pretrained_model',
+#                         help='initialize with pretrained model weights',
+#                         default='data/imagenet_models/VGG16.v2.caffemodel', type=str)
+#     parser.add_argument('--cfg', dest='cfg_file',
+#                         help='optional config file',
+#                         default=None, type=str)
+#     parser.add_argument('--imdb', dest='imdb_name',
+#                         help='dataset to train on',
+#                         default='voc_2007_trainval', type=str)
+#     parser.add_argument('--set', dest='set_cfgs',
+#                         help='set config keys', default=None,
+#                         nargs=argparse.REMAINDER)
+#
+#     if len(sys.argv) == 1:
+#         parser.print_help()
+#         sys.exit(1)
+#
+#     args = parser.parse_args()
+#     return args
 
 def get_roidb(imdb_name, rpn_file=None):
     imdb = get_imdb(imdb_name)
@@ -201,16 +201,22 @@ def train_fast_rcnn(queue=None, imdb_name=None, init_model=None, solver=None,
     queue.put({'model_path': fast_rcnn_model_path})
 
 if __name__ == '__main__':
-    args = parse_args()
+    #args = parse_args()
 
     print('Called with args:')
-    print(args)
+    #print(args)
 
-    if args.cfg_file is not None:
-        cfg_from_file(args.cfg_file)
-    if args.set_cfgs is not None:
-        cfg_from_list(args.set_cfgs)
-    cfg.GPU_ID = args.gpu_id
+    # if args.cfg_file is not None:
+    #     cfg_from_file(args.cfg_file)
+    # if args.set_cfgs is not None:
+    #     cfg_from_list(args.set_cfgs)
+    gpu_id = 0
+    net_name = 'VGG16'
+    pretrained_model = 'data/imagenet_models/VGG16.v2.caffemodel'
+    #cfg = none
+    imdb_define = 'voc_2007_trainval'
+
+    cfg.GPU_ID = gpu_id
 
     # --------------------------------------------------------------------------
     # Pycaffe doesn't reliably free GPU memory when instantiated nets are
@@ -222,7 +228,7 @@ if __name__ == '__main__':
     # queue for communicated results between processes
     mp_queue = mp.Queue()
     # solves, iters, etc. for each training stage
-    solvers, max_iters, rpn_test_prototxt = get_solvers(args.net_name)
+    solvers, max_iters, rpn_test_prototxt = get_solvers(net_name)
 
     print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
     print 'Stage 1 RPN, init from ImageNet model'
@@ -231,8 +237,8 @@ if __name__ == '__main__':
     cfg.TRAIN.SNAPSHOT_INFIX = 'stage1'
     mp_kwargs = dict(
             queue=mp_queue,
-            imdb_name=args.imdb_name,
-            init_model=args.pretrained_model,
+            imdb_name=imdb_define,
+            init_model=pretrained_model,
             solver=solvers[0],
             max_iters=max_iters[0],
             cfg=cfg)
@@ -247,7 +253,7 @@ if __name__ == '__main__':
 
     mp_kwargs = dict(
             queue=mp_queue,
-            imdb_name=args.imdb_name,
+            imdb_name=imdb_define,
             rpn_model_path=str(rpn_stage1_out['model_path']),
             cfg=cfg,
             rpn_test_prototxt=rpn_test_prototxt)
@@ -263,7 +269,7 @@ if __name__ == '__main__':
     cfg.TRAIN.SNAPSHOT_INFIX = 'stage1'
     mp_kwargs = dict(
             queue=mp_queue,
-            imdb_name=args.imdb_name,
+            imdb_name=imdb_define,
             init_model=args.pretrained_model,
             solver=solvers[1],
             max_iters=max_iters[1],
@@ -281,7 +287,7 @@ if __name__ == '__main__':
     cfg.TRAIN.SNAPSHOT_INFIX = 'stage2'
     mp_kwargs = dict(
             queue=mp_queue,
-            imdb_name=args.imdb_name,
+            imdb_name=imdb_define,
             init_model=str(fast_rcnn_stage1_out['model_path']),
             solver=solvers[2],
             max_iters=max_iters[2],
@@ -297,7 +303,7 @@ if __name__ == '__main__':
 
     mp_kwargs = dict(
             queue=mp_queue,
-            imdb_name=args.imdb_name,
+            imdb_name=imdb_define,
             rpn_model_path=str(rpn_stage2_out['model_path']),
             cfg=cfg,
             rpn_test_prototxt=rpn_test_prototxt)
@@ -313,7 +319,7 @@ if __name__ == '__main__':
     cfg.TRAIN.SNAPSHOT_INFIX = 'stage2'
     mp_kwargs = dict(
             queue=mp_queue,
-            imdb_name=args.imdb_name,
+            imdb_name=imdb_define,
             init_model=str(rpn_stage2_out['model_path']),
             solver=solvers[3],
             max_iters=max_iters[3],

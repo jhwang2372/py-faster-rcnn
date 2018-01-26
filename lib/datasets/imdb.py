@@ -116,6 +116,26 @@ class imdb(object):
             self.roidb.append(entry)
         self._image_index = self._image_index * 2
 
+#   def append_flipped_images(self):  
+#       num_images = self.num_images  
+#       widths = [PIL.Image.open(self.image_path_at(i)).size[0]  
+#                 for i in xrange(num_images)]  
+#       for i in xrange(num_images):  
+#           boxes = self.roidb[i]['boxes'].copy()  
+#           oldx1 = boxes[:, 0].copy()  
+#           oldx2 = boxes[:, 2].copy()  
+#           boxes[:, 0] = widths[i] - oldx2 - 1  
+#           #print boxes[:, 0]  
+#           boxes[:, 2] = widths[i] - oldx1 - 1  
+#           #print boxes[:, 0]  
+#           assert (boxes[:, 2] >= boxes[:, 0]).all()  
+#           entry = {'boxes' : boxes,  
+#                    'gt_overlaps' : self.roidb[i]['gt_overlaps'],  
+#                    'gt_classes' : self.roidb[i]['gt_classes'],  
+#                    'flipped' : True}  
+#           self.roidb.append(entry)  
+#       self._image_index = self._image_index * 2  
+
     def evaluate_recall(self, candidate_boxes=None, thresholds=None,
                         area='all', limit=None):
         """Evaluate detection proposal recall metrics.
